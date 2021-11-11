@@ -1,0 +1,27 @@
+<div class="container">
+  <br />
+  <h3>Training Details</h3>
+  <br />
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col text-right">
+          <a href="#" routerLink="/courses/list" class="btn btn-success">Back To Training List</a>
+          <a href="#" routerLink="/courses/login" class="btn btn-success">Logout</a>
+        </div>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li><h1><b>User :</b> {{ courses.users?.userName }}</h1></li>
+      <li><b>Course :</b> {{ courses.course?.courserName }}</li>
+      <li><b>Start Date:</b> {{ courses.startDate |date:'dd / MMM / yyyy' }}</li>
+      <li><b>End Date:</b> {{ courses.endDate |date:'dd / MMM / yyyy'}}</li>
+      <li><b>Duration:</b> {{ courses.duration }} </li>
+      <li><b>Trainer:</b> {{ courses.trainer?.trainerName}}</li>
+      <li><b>Link To join:</b> {{ courses.linkToJoin }}</li>
+    </ul>
+  </div>
+</div>

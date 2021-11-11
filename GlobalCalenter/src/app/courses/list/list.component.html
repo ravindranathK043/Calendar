@@ -1,0 +1,81 @@
+<div class="container">
+  <br />
+  <div class="row">
+    <h1>All Courses Details</h1>
+    <div class="col text-right">
+      <a href="#" routerLink="/courses/create/" class="btn btn-success">Create New</a>
+    </div>
+      <div class="col text-right">
+        <a href="#" routerLink="/courses/login" class="btn btn-success">Logout</a>
+      </div>
+
+    </div>
+  <br />
+  <div class="row">
+    <div class="col text-left">
+      <label for="startDate">Start Date :</label>
+      <input type="date"  id="startDate" [min]="dateFrom" #startDate (change)="selectdate(startDate.value,'')" class="form-control">
+
+    </div>
+    <div class="col text-right">
+      <label for="EndDate">End Date :</label>
+      <input type="date" id="EndDate" [min]="dateFrom" #EndDate (change)="selectdate('',EndDate.value)" class="form-control">
+
+    </div>
+   
+  </div>
+    <div class="row">
+      <div class="col text-left">
+        <label for="courseId">Courses :</label>
+        <select #mySelect (change)='onCoursesSelected(mySelect.value)'
+                id="courseId" class="form-control">
+          <option value="">-Select-</option>
+          <option *ngFor="let co of AllCou" [ngValue]="co.courseId">{{co.courserName}}</option>
+        </select>
+      </div>
+      <div class="col text-right">
+        <label for="trainerId">Trainer :</label>
+        <select #mySelectT (change)='onTrainerSelected(mySelectT.value)'
+                id="trainerId" class="form-control">
+          <option value="">-Select-</option>
+          <option *ngFor="let co of AllTrainer" [ngValue]="co.trainerId">{{co.trainerName}}</option>
+        </select>
+      </div>
+    </div>
+  <br/>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Courses</th>
+          <th>PreRequisite</th>
+          <th>User Name</th>
+          <th>Trainer Name</th>
+          <th>Duration</th>
+          <th>StartDate</th>
+          <th>EndDate</th>
+          <th>Timings</th>
+          <th>LinkToJoin</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of Coursesa">
+          <td>{{a.course?.courserName}}</td>
+          <td>{{a.preRequisite}}</td>
+          <td>{{a.users?.userName}}</td>
+          <td>{{a.trainer?.trainerName}}</td>
+          <td>{{a.duration }}  Hrs</td>
+          <td>{{a.startDate | date :'dd-MMM-yyyy'}}</td>
+          <td>{{a.endDate| date :'dd-MMM-yyyy'}}</td>
+          <td>{{a.timings | date :'HH:mm a' }}</td>
+          <td>{{a.linkToJoin}}</td>
+          <td class="text-right">
+
+            <button type="button" (click)="deleteCourses(a.id,a.users?.userName)" class="btn btn-success">Delete</button>
+            <button type="button" (click)="EditCourses(a.id,a.users?.userName)" class="btn btn-success">Edit</button>
+            <button type="button" (click)="DetailsCourses(a.id)" class="btn btn-success">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

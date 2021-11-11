@@ -1,0 +1,27 @@
+
+
+<div class="modal-dialog">
+  <div>
+    <h1>Login</h1>
+  </div>
+
+
+  <form #loginUser="ngForm" (ngSubmit)="registerUser(userName,password)">
+   <!-- <form #loginUser="ngForm" (ngSubmit)="onSubmit(loginUser)">-->
+      <div class="form-model">
+        <label for="userName" class="form-control">UserName</label>
+        <input type="text" name="userName" id="userName" class="form-control" #userName>
+        <br />
+        <label for="password" class="form-control">Password</label>
+        <input type="password" name="password" id="password" class="form-control" #password>
+        <br />
+        <button type="submit">Login</button>
+
+      </div>
+    </form>
+
+
+
+</div>
+
+

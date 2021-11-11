@@ -1,0 +1,88 @@
+
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col">
+      <h3>Create Training</h3>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/courses/list" class="btn btn-success">Back To Training List</a>
+      <a href="#" routerLink="/courses/login" class="btn btn-success">Logout</a>
+    </div>
+  </div>
+  <br />
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit(createForm)">
+    <div class="row">
+      <div class="col text-left">
+        <div class="form-group">
+          <label for="courseId">Course :</label>
+          <select formControlName="courseId"
+                  id="courseId" class="form-control">
+            <option value="">-Select-</option>
+            <option *ngFor="let co of courses" [ngValue]="co.courseId">{{co.courserName}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="preRequisite">PreRequisite :</label>
+          <input type="text" formControlName="preRequisite" id="preRequisite" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Duration :</label>
+          <input type="text" formControlName="duration" id="duration" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+          <label for="userId">User :</label>
+          <select formControlName="userId"
+                  id="userId" class="form-control">
+            <option value="">-Select-</option>
+            <option *ngFor="let co of user" [ngValue]="co.userId">{{co.userName}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col text-right">
+        <div class="form-group">
+          <label for="startDate">Start Date :</label>
+          <input type="date" formControlName="startDate" id="startDate" [min]="dateFrom" [ngModel]="dateFrom" class="form-control">
+
+        </div>
+
+        <div class="form-group">
+          <label for="endDate">End Date :</label>
+          <input type="date" formControlName="endDate" id="endDate" [min]="dateFrom" [ngModel]="dateFrom" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="timings">Timing :</label>
+          <input type="time" formControlName="timings" id="timings" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="trainerId">Trainer :</label>
+          <select formControlName="trainerId"
+                  id="trainerId" class="form-control">
+            <option value="">-Select-</option>
+            <option *ngFor="let co of trainer" [ngValue]="co.trainerId">{{co.trainerName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="linkToJoin">link To Join :</label>
+        <input type="text" formControlName="linkToJoin" id="linkToJoin" class="form-control" />
+      </div>
+
+
+
+    </div>  <br />
+    <div class="row">
+      <button class="btn btn-primary" type="submit" [disabled]="!createForm.valid">Save</button></div>
+  </form>  
+</div>
+<script>
+  const input = document.querySelector('input');
+  input.value = '2020-11-30';
+</script>
